@@ -3,61 +3,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang Chủ - Tiện Ích & Get Key</title>
+  <title>Tumadam MOD - Developer & Modder</title>
+
+  <!-- Font & Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f2f5f6;
+      color: #2c3e50;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Top Bar Header */
+    .header {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .time-badge {
+      background: #ffffff;
+      border: 1.5px solid #a8e6cf;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .menu-btn {
+      background: #ffffff;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: radial-gradient(circle at top, #1b2838, #0a0f1d 65%);
-    }
-    .card {
-      width: 100%;
-      max-width: 480px;
-      padding: 32px 24px;
-      text-align: center;
-      background: rgba(20, 30, 55, .94);
-      border: 1px solid #34466e;
-      border-radius: 22px;
-      box-shadow: 0 20px 60px #0008;
-    }
-    h1 { margin: 0 0 10px; font-size: 26px; }
-    p { color: #b7c4df; line-height: 1.6; margin-bottom: 24px; }
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 0;
-      border-radius: 12px;
-      color: white;
-      background: #315efb;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
+      font-size: 18px;
       cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Main Content */
+    .profile-card {
+      text-align: center;
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+
+    .avatar-wrapper {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #b2bec3;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sub-tag {
+      background: #e1e8ed;
+      color: #636e72;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .greeting {
+      font-size: 15px;
+      color: #636e72;
+      margin-bottom: 4px;
+    }
+
+    .name {
+      font-size: 32px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .badge-check {
+      color: #0095f6;
+      font-size: 22px;
+    }
+
+    .scroll-hint {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #2d3436;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Sidebar Drawer Menu */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .sidebar-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      z-index: 100;
+      padding: 24px;
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+    }
+
+    .sidebar.active {
+      right: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f1f2f6;
+      margin-bottom: 20px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-info img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .user-title h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .user-title p {
+      font-size: 12px;
+      color: #8395a7;
+    }
+
+    .close-btn {
+      background: #f1f2f6;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: #2d3436;
+    }
+
+    /* Menu Links */
+    .menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu-item a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #2d3436;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 12px;
       transition: background 0.2s;
     }
-    .btn:hover { background: #4770ff; }
-    .btn-secondary { background: #223254; border: 1px solid #3d568c; }
-    .btn-secondary:hover { background: #2c3f6a; }
+
+    .menu-item a:hover {
+      background: #f8f9fa;
+    }
+
+    .menu-item i {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+      color: #576574;
+    }
   </style>
 </head>
 <body>
-  <main class="card">
-    <h1>🚀 TRANG CHỦ DỰ ÁN</h1>
-    <p>Chào mừng bạn đến với hệ thống của tôi. Chọn chức năng bên dưới để tiếp tục:</p>
 
-    <!-- Nút chuyển sang trang get key (Thay link bên dưới bằng link GitHub Pages chứa trang lấy key của bạn) -->
-    <a href="https://<tên-tài-khoản-github>.github.io/<tên-repo-lấy-key>/" class="btn">🔑 Lấy Key Tự Động</a>
+  <!-- Header -->
+  <header class="header">
+    <div class="time-badge">
+      <span id="clock">00:00:00</span> ⛅
+    </div>
+    <button class="menu-btn" id="openMenu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
 
-    <!-- Bạn có thể thêm các nút chức năng khác ở đây sau này -->
-    <a href="#" class="btn btn-secondary">🛠️ Tính năng khác (Sắp ra mắt)</a>
+  <!-- Main Profile -->
+  <main class="profile-card">
+    <div class="avatar-wrapper">
+      <!-- Thay link ảnh avatar của bạn ở đây -->
+      <img src="https://i.ibb.co/3sX8Mrm/avatar.jpg" alt="Tumadam Avatar">
+    </div>
+
+    <div class="sub-tag">Tumadam</div>
+    <div class="greeting">Hi, I am</div>
+    <h1 class="name">Tumadam <i class="fa-solid fa-circle-check badge-check"></i></h1>
+
+    <div class="scroll-hint">
+      Scroll down to explore 👇
+    </div>
   </main>
+
+  <!-- Overlay & Sidebar Menu -->
+  <div class="sidebar-overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="user-info">
+        <img src="https://i.ibb.co/3sX8Mrm/avatar.jpg" alt="Avatar Small">
+        <div class="user-title">
+          <h3>Tumadam MOD</h3>
+          <p>Developer & Modder</p>
+        </div>
+      </div>
+      <button class="close-btn" id="closeMenu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <ul class="menu-list">
+      <li class="menu-item">
+        <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+      </li>
+      <li class="menu-item">
+        <a href="#tai-game"><i class="fa-solid fa-gamepad"></i> Tải Game</a>
+      </li>
+      <!-- Link trang get key bạn thay link repository get key vào đây -->
+      <li class="menu-item">
+        <a href="https://<ten-tai-khoan>.github.io/<ten-repo-key>/"><i class="fa-solid fa-key"></i> Get Key</a>
+      </li>
+      <li class="menu-item">
+        <a href="#file-mod"><i class="fa-solid fa-microchip"></i> File Mod</a>
+      </li>
+      <li class="menu-item">
+        <a href="#video-huong-dan"><i class="fa-circle-play"></i> Video Hướng Dẫn</a>
+      </li>
+      <li class="menu-item">
+        <a href="#contact"><i class="fa-solid fa-comment-dots"></i> Contact</a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- JS Logic -->
+  <script>
+    // 1. Đồng hồ thời gian thực
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 2. Mở / Đóng Sidebar Menu
+    const openMenuBtn = document.getElementById('openMenu');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openMenuBtn.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    function closeSidebar() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    closeMenuBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+  </script>
 </body>
 </html>
