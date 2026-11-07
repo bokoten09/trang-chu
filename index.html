@@ -68,7 +68,7 @@
     /* Profile Header */
     .profile-card {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 20px;
       padding: 0 20px;
       width: 100%;
       max-width: 600px;
@@ -115,7 +115,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .badge-check {
@@ -127,12 +127,72 @@
       color: #b2bec3;
       font-size: 14px;
       font-weight: 600;
-      margin-top: 10px;
+      margin-bottom: 24px;
+    }
+
+    /* Navigation Menu Cards */
+    .nav-container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 0 20px;
+    }
+
+    .nav-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #2d3436;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e1e8ed;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .icon-lq { background: #0984e3; }
+    .icon-ff { background: #d63031; }
+    .icon-fc { background: #00897b; }
+    .icon-proxy { background: #6c5ce7; }
+
+    .card-text h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .arrow-btn {
+      color: #b2bec3;
+      font-size: 16px;
     }
 
     footer {
       margin-top: auto;
-      padding-top: 50px;
+      padding-top: 40px;
       font-size: 13px;
       color: #b2bec3;
       font-weight: 600;
@@ -162,9 +222,64 @@
     <h1 class="name">Nguyen Bang 👑 <i class="fa-solid fa-circle-check badge-check"></i></h1>
     
     <div class="explore-text">
-      Scroll down to explore 👇
+      Danh sách dịch vụ 👇
     </div>
   </main>
+
+  <!-- Navigation Grid / Menu Links -->
+  <div class="nav-container">
+    <!-- 1. Menu Liên Quân -->
+    <a href="https://bokoten09.github.io/menu-lien-quan/" class="nav-card">
+      <div class="card-info">
+        <div class="card-icon icon-lq">
+          <i class="fa-solid fa-gamepad"></i>
+        </div>
+        <div class="card-text">
+          <h3>Menu Liên Quân</h3>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right arrow-btn"></i>
+    </a>
+
+    <!-- 2. Menu Free Fire -->
+    <a href="https://bokoten09.github.io/menu-free-fire/" class="nav-card">
+      <div class="card-info">
+        <div class="card-icon icon-ff">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        <div class="card-text">
+          <h3>Menu Free Fire</h3>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right arrow-btn"></i>
+    </a>
+
+    <!-- 3. FC Mobile -->
+    <a href="https://bokoten09.github.io/menu-fc-mobile/" class="nav-card">
+      <div class="card-info">
+        <div class="card-icon icon-fc">
+          <i class="fa-solid fa-futbol"></i>
+        </div>
+        <div class="card-text">
+          <h3>FC Mobile</h3>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right arrow-btn"></i>
+    </a>
+
+    <!-- 4. ProxyDeck -->
+    <a href="https://bokoten09.github.io/proxydeck/" class="nav-card">
+      <div class="card-info">
+        <div class="card-icon icon-proxy">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <div class="card-text">
+          <h3>ProxyDeck</h3>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right arrow-btn"></i>
+    </a>
+  </div>
 
   <footer>
     Nguyen Bang 👑 System &copy; 2026
