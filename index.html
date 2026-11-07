@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tumadam MOD - Developer & Modder</title>
+  <title>Nguyen Bang 👑 - Developer & Modder</title>
 
   <!-- Font & Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -260,12 +260,12 @@
   <main class="profile-card">
     <div class="avatar-wrapper">
       <!-- Thay link ảnh avatar của bạn ở đây -->
-      <img src="https://i.ibb.co/3sX8Mrm/avatar.jpg" alt="Tumadam Avatar">
+      <img src="https://i.ibb.co/3sX8Mrm/avatar.jpg" alt="Nguyen Bang Avatar">
     </div>
 
-    <div class="sub-tag">Tumadam</div>
+    <div class="sub-tag">Nguyen Bang 👑</div>
     <div class="greeting">Hi, I am</div>
-    <h1 class="name">Tumadam <i class="fa-solid fa-circle-check badge-check"></i></h1>
+    <h1 class="name">Nguyen Bang 👑 <i class="fa-solid fa-circle-check badge-check"></i></h1>
 
     <div class="scroll-hint">
       Scroll down to explore 👇
@@ -280,7 +280,7 @@
       <div class="user-info">
         <img src="https://i.ibb.co/3sX8Mrm/avatar.jpg" alt="Avatar Small">
         <div class="user-title">
-          <h3>Tumadam MOD</h3>
+          <h3>Nguyen Bang 👑</h3>
           <p>Developer & Modder</p>
         </div>
       </div>
@@ -296,9 +296,9 @@
       <li class="menu-item">
         <a href="#tai-game"><i class="fa-solid fa-gamepad"></i> Tải Game</a>
       </li>
-      <!-- Link trang get key bạn thay link repository get key vào đây -->
+      <!-- Nút Get Key tích hợp tính năng bảo mật chuyển hướng GTraffic -->
       <li class="menu-item">
-        <a href="https://<ten-tai-khoan>.github.io/<ten-repo-key>/"><i class="fa-solid fa-key"></i> Get Key</a>
+        <a href="#" id="getKeyLink"><i class="fa-solid fa-key"></i> Get Key</a>
       </li>
       <li class="menu-item">
         <a href="#file-mod"><i class="fa-solid fa-microchip"></i> File Mod</a>
@@ -343,6 +343,20 @@
 
     closeMenuBtn.addEventListener('click', closeSidebar);
     overlay.addEventListener('click', closeSidebar);
+
+    // 3. Xử lý chuyển hướng Get Key bảo mật sang GTraffic
+    document.getElementById('getKeyLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Kích hoạt vé thông hành bảo mật
+      sessionStorage.setItem("g_passed_verify", "true");
+
+      // Tạo đường dẫn đích đến result.html
+      const currentDirUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
+      const resultPageUrl = `${currentDirUrl}/result.html`;
+      
+      // Chuyển hướng sang GTraffic với mã link QcD5iTe
+      window.location.href = `https://gtraffic.io/QcD5iTe?redirect=${encodeURIComponent(resultPageUrl)}`;
+    });
   </script>
 </body>
 </html>
